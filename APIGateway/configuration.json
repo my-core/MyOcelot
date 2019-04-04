@@ -1,0 +1,37 @@
+{
+  //ReRoutes是告诉Ocelot如何处理上游请求的对象
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/api/customers",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 9001
+        }
+      ],
+      "UpstreamPathTemplate": "/customers",
+      "UpstreamHttpMethod": [
+        "Get"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/products",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 9002
+        }
+      ],
+      "UpstreamPathTemplate": "/products",
+      "UpstreamHttpMethod": [
+        "Get"
+      ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "RequestIdKey": "OcRequestId",
+    "AdministrationPath": "/admin"
+  }
+}
